@@ -27,12 +27,10 @@ class Thermostat {
     if (this.isMinimumTemperature()) {
       return;
     };
-    this.temperature -= 1;
+    this.temperature--;
   };
 
-  isMinimumTemperature() {
-    return this.temperature === this.MINIMUM_TEMPERATURE;
-  };
+
 
   isPowerSavingModeOn() {
     return this.powerSavingMode;
@@ -46,13 +44,6 @@ class Thermostat {
     this.powerSavingMode = true;
   };
 
-  isMaximumTemperature() {
-    if (this.isPowerSavingModeOn() === false) {
-      return this.temperature === this.MAX_LIMIT_PSM_OFF;
-    };
-    return this.temperature === this.MAX_LIMIT_PSM_ON;
-  };
-
   resetTemperature() {
     this.temperature = this.DEFAULT_TEMPERATURE;
   };
@@ -64,7 +55,17 @@ class Thermostat {
     if (this.temperature <= this.HIGH_ENERGY_USAGE_LIMIT) {
       return 'medium-usage';
     };
-    return 'high-usage';
+      return 'high-usage';
   };
 
+  isMinimumTemperature() {
+    return this.temperature === this.MINIMUM_TEMPERATURE;
+  };
+
+  isMaximumTemperature() {
+    if (this.isPowerSavingModeOn() === false) {
+      return this.temperature === this.MAX_LIMIT_PSM_OFF;
+    };
+    return this.temperature === this.MAX_LIMIT_PSM_ON;
+  };
 };
